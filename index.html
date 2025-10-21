@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cybersecurity Form</title>
+</head>
+<body>
+  <h1>Form:</h1>
+
+  <form id="contactForm" action="https://santigutierrezsch.page.gd/sendmail.php" method="POST">
+    <label>Name:</label><br>
+    <input id="name" name="name" type="text" required><br><br>
+
+    <label>Email:</label><br>
+    <input id="email" name="email" type="email" required><br><br>
+
+    <label>Message:</label><br>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+
+    function sanitize(input) {
+      return input.replace(/[<>&"'`]/g, "");
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      const rawName = document.getElementById("name").value;
+      const safeName = sanitize(rawName);
+      alert("Hello, " + safeName + "!");
+    });
+  </script>
+</body>
+</html>
